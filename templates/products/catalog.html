@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% load staticfiles  %}
+
+
+{% block content %}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="album py-5 bg-light">
+        <div class="container">
+
+          <div class="row">
+
+            {% for product_image in products_images %}
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+
+
+
+          <a href='{% url 'products:product'  product_image.product.id %}'>
+
+              <img class="card-img-top" style="height: 225px; width: 100%; display: block; margin-top: 20"
+
+                src="{{ product_image.image.url }}" data-holder-rendered="true">
+
+              </a>
+
+                <div class="card-body">
+
+                    <h4>
+
+                    {{ product_image.product.name }}
+                    </h4>
+
+
+
+                <p class="card-text">
+
+                    {{ product_image.product.description|truncatechars_html:50 }}
+
+                </p>
+
+    <div>
+        <a href='{% url 'products:product'  product_image.product.id %}'>
+                <button type="button" class="btn btn-success btn-outline-secondary">Детали</button>
+
+        </a>
+    </div>
+
+
+
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+   {% endfor %}
+
+              </div>
+            </div>
+          </div>
+
+
+
+<div class="container">
+
+           <div class="row">
+
+                  <div class="col-lg-3">
+                      <div class="product-item">
+
+                      </div>
+
+                  </div>
+           </div>
+       </div>
+{% endblock %}
